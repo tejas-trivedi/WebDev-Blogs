@@ -32,4 +32,5 @@ urllib3==1.25.7
 virtualenv==16.7.9
 wincertstore==0.2
 wrapt==1.11.2
-psycopg2==2.8.4
+
+python-dotenv 
