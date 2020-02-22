@@ -8,20 +8,70 @@
 
 <head>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=2, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="https://fontawesome.com/icons/blog?style=solid">
 
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css" />
 
     <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}"> {% if title %}
-    <title>WebDev Blogs - {{ title }}</title>
+    <title>
+        WebDev Blogs - {{ title }}</title>
     {% else %}
-    <title>WebDev Blogs</title>
+    <title>WebDev Blogs
+    </title>
     {% endif %}
 </head>
+
+
+<style>
+    p.italic {
+        font-style: italic;
+    }
+    
+    div.first {
+        opacity: 0.6;
+    }
+    
+    sh {
+        text-shadow: 2px 2px #1e1f22db;
+    }
+    
+    body {
+        margin: 4;
+    }
+    
+    .topnav {
+        overflow: hidden;
+        background-color: #5825ff;
+    }
+    
+    .topnav a {
+        float: left;
+        display: block;
+        color: blue;
+        text-align: center;
+        padding: 8px 10px;
+        text-decoration: none;
+        font-size: 10px;
+        border-bottom: 1px solid transparent;
+    }
+    
+    .topnav a:hover {
+        border-bottom: 2.5px solid rgb(71, 0, 223);
+    }
+    
+    .topnav a.active {
+        border-bottom: 2.5px solid rgb(71, 0, 223);
+    }
+</style>
 
 
 
@@ -29,31 +79,69 @@
 
 
 <body>
+
     <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
             <div class="container">
-                <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">WebDev Blogs</a>
+                <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">
+
+                    <h3>
+                        <p class="italic"><i class="material-icons">computer</i>
+                            <sh> WebDev Blogs</sh>
+                        </p>
+                    </h3>
+                </a>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
                     <div class="navbar-nav mr-auto">
-                        <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
-                        <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+                        <div class="topnav">
+                            <a href="{% url 'blog-home' %}">
+                                <h6>Home</h6>
+                            </a>
+                        </div>
+                        <div class="topnav">
+                            <a href="{% url 'blog-about' %}">
+                                <h6>About</h6>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">
                         {% if user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
-                        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a> {% else %}
-                        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a> {% endif %}
+                        <div class="topnav">
+                            <a class="nav-item nav-link" href="{% url 'post-create' %}">
+                                <h6>New Post</h6>
+                            </a>
+                        </div>
+                        <div class="topnav">
+                            <a class="nav-item nav-link" href="{% url 'profile' %}">
+                                <h6>Profile</h6>
+                            </a>
+                        </div>
+                        <div class="topnav">
+                            <a class="nav-item nav-link" href="{% url 'logout' %}">
+                                <h6>Logout</h6>
+                            </a>
+                        </div> {% else %}
+                        <div class="topnav">
+                            <a class="nav-item nav-link" href="{% url 'login' %}">
+                                <h6>Login</h6>
+                            </a>
+                        </div>
+                        <div class="topnav">
+                            <a class="nav-item nav-link" href="{% url 'register' %}">
+                                <h6>Register</h6>
+                            </a>
+                        </div> {% endif %}
                     </div>
                 </div>
             </div>
+
+
         </nav>
     </header>
     <main role="main" class="container">
