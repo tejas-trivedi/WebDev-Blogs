@@ -34,3 +34,4 @@ wincertstore==0.2
 wrapt==1.11.2
 
 python-dotenv 
+rest_framework

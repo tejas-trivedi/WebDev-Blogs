@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm 
+from blog.models import Post
+from users.serializers import PostSerializer
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 def register(request):
     if request.method == 'POST':
@@ -18,4 +22,11 @@ def register(request):
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')
+
+
+
+def post_list(request):
+    post=Post.objects.all()
+    serializer = PostSerializer(post, many=True)
+    return Response(serializer.data) 
 

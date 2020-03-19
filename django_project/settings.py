@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [ 
+    'rest_framework',    
     'users.apps.UsersConfig',
     'crispy_forms',
     'blog.apps.BlogConfig',
@@ -53,6 +54,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'django_project.urls'
+
 
 TEMPLATES = [
     {

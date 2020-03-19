@@ -1,14 +1,129 @@
-{% extends "blog/base.html" %} {% load crispy_forms_tags %} {% block content %}
-<div class="content-section">
-    <form method="POST">
-        {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Blog Post</legend>
-            {{ form|crispy }}
-        </fieldset>
-        <div class="form-group">
-            <button class="btn btn-outline-info" type="submit"><font color="black">Post</font></button>
+{% load crispy_forms_tags %} {% block content %}
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Oswald"
+    }
+    
+    body {
+        font-family: "Open Sans"
+    }
+    
+    menu ul {
+        list-style: none;
+    }
+    
+    menu li {
+        display: inline;
+    }
+</style>
+
+<body class="w3-grey">
+
+    <!-- Navigation bar with social media icons -->
+    <div class="w3-bar w3-black w3-hide-small">
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-facebook-official"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-instagram"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-snapchat"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-flickr"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-linkedin"></i></a>
+    </div>
+
+    <!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+    <div class="w3-content" style="max-width:1600px">
+
+        <!-- Header -->
+        <header class="w3-container w3-center w3-padding-48 w3-white">
+            <h1 class="w3-xxxlarge"><b>WebDev Blogs</b></h1>
+            <h6>Welcome to the blog of <span class="w3-tag">Developers</span></h6>
+        </header>
+
+
+
+        <div id="menu">
+            <ul>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">
+                        <div class="topnav">
+                            <a href="{% url 'blog-home' %}">
+                                <h6>Home</h6>
+                            </a>
+                        </div>
+                        <div class="topnav">
+                            <a href="{% url 'blog-about' %}">
+                                <h6>About</h6>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="navbar-nav">
+                        {% if user.is_authenticated %}
+                        <div class="topnav">
+                            <a class="nav-item nav-link" href="{% url 'post-create' %}">
+                                <h6>Add New Blog</h6>
+                            </a>
+                        </div>
+                        <div class="topnav">
+                            <a class="nav-item nav-link" href="{% url 'profile' %}">
+                                <h6>My Profile</h6>
+                            </a>
+                        </div>
+                        <div class="topnav">
+                            <a class="nav-item nav-link" href="{% url 'logout' %}">
+                                <h6>Logout</h6>
+                            </a>
+                        </div> {% else %}
+                        <div class="topnav">
+                            <a class="nav-item nav-link" href="{% url 'login' %}">
+                                <h6>Login</h6>
+                            </a>
+                        </div>
+                        <div class="topnav">
+                            <a class="nav-item nav-link" href="{% url 'register' %}">
+                                <h6>Register</h6>
+                            </a>
+                        </div> {% endif %}
+                    </div>
+            </ul>
+            </div>
+            <hr>
+
+            <div class="content-section">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">
+                            <h3>Blog Post</h3>
+                        </legend>
+
+                        {{ form|crispy }}
+
+                        <br>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info" type="submit"><font color="black">Post</font></button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
         </div>
-    </form>
+</body>
 </div>
-{% endblock content %}
+<br><br><br> {% endblock content %}

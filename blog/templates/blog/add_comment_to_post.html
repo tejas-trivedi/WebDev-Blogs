@@ -1,4 +1,4 @@
-{% block content %}
+ {% block content %}
 
 
 
@@ -23,7 +23,7 @@
     }
 </style>
 
-<body class="w3-gray">
+<body class="w3-grey">
 
     <!-- Navigation bar with social media icons -->
     <div class="w3-bar w3-black w3-hide-small">
@@ -36,7 +36,7 @@
     </div>
 
     <!-- w3-content defines a container for fixed size centered content, 
-and is wrapped around the whole page content, except for the footer in this example -->
+ and is wrapped around the whole page content, except for the footer in this example -->
     <div class="w3-content" style="max-width:1600px">
 
         <!-- Header -->
@@ -49,11 +49,9 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 
 
-        <!-- Grid -->
-        <div class="w3-row w3-padding w3-border">
 
-
-            <div class="alert alert-info">
-                Your password has been set.
-            </div>
-            <a href="{% url 'login' %}"> Sign In Here </a> {% endblock content %}
+        <h1>New comment</h1>
+        <form method="POST" class="post-form">{% csrf_token %} {{ form.as_p }}
+            <button type="submit" class="save btn btn-outline-primary">Send</button>
+        </form>
+        {% endblock %}
