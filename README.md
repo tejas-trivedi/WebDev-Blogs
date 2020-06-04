@@ -3,6 +3,7 @@ Blogging Website
 
 Under Development
 
+Made using Django Framework for the backend and HTML , CSS for frontend
 
 1. Clone the project folder
 2. Install the requirements using "pip install -r requirements.txt"
